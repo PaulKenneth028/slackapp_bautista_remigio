@@ -1,20 +1,50 @@
-import React from "react";
+"use client";
+import Link from "next/link";
+import createUser from "./handleRegister";
+import React, { useState } from "react";
+import { useRouter } from "next/router";
 
-export default function Signup() {
-  async function test() {
-    const request = await fetch("http://206.189.91.54/api/v1/auth/", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({
-        email: "emegerd10000000@example.com",
-        password: "12345678",
-        password_confirmation: "12345678",
-      }),
-    });
-    console.log(await request.json());
-  }
-  test();
-  return <div>Hello Signup</div>;
-}
+const Register = () => {
+  const [response, setResponse] = useState<any>();
+ 
+  return (
+    <>
+      <form
+        onSubmit={async (event) => {
+          const data = await createUser(event);
+          setResponse(data);
+          console.log(data);
+          if(data?.status === "success"){
+            <Link href="./login" ></Link>
+            console.log("goto loginpage")
+          }
+           
+        }}
+        className="flex flex-col w-96 m-auto text-center text-lg font-semibold gap-1"
+      >
+        <h1>Register</h1>
+
+        <label htmlFor="email">Email</label>
+        <input type="email" name="email" id="email" />
+        <div className=" text-red-700">
+          {response?.errors?.email && "email " + response.errors.email}
+        </div>
+        <label htmlFor="password">Password</label>
+        <input type="password" name="password" id="password" />
+        <div className=" text-red-700">
+          {response?.errors?.password && "password " + response.errors.password}
+        </div>
+        <label htmlFor="passwordConfirm">Confirm Password</label>
+        <input type="password" name="passwordConfirm" id="passwordConfirm" />
+        <div className=" text-red-700">
+          {response?.errors?.password_confirmation &&
+            "password " + response.errors.password_confirmation}
+        </div>
+        <button type="submit">Register</button>
+        <Link href="./login">already have an account? Login</Link>
+      </form>
+    </>
+  );
+};
+
+export default Register;
