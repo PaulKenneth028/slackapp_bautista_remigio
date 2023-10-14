@@ -1,0 +1,42 @@
+.homefeatures {
+    display: grid;
+    grid-template-columns: 500px 350px;
+    grid-template-rows: 100px 150px 100px ;  
+    grid-template-areas: 
+    "imageLogo1 imageLogo2 ..."
+    "imageLogo1 ...  features "
+    "imageLogo1 imageLogo3 features";
+    background-image: url("/Images/Neon Shapes423982784.jpg");
+    height: 550px;
+    padding-top: 15px;
+}
+
+#imgLogo1 {
+    grid-area: imageLogo1;
+}
+
+#imgLogo2 {
+    grid-area: imageLogo2;
+}
+
+#imgLogo3 {
+    
+    grid-area: imageLogo3;
+}
+
+.features {
+    grid-area: features;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 3px;
+    height: 75px;
+    border: 1px solid black;
+    background-color: rgb(157, 91, 157);
+    width: 500px;
+    margin-top: 5px;
+    backdrop-filter: blur(20px);
+    box-shadow: 20px 20px 22px rgba(0,0,0,0.2);
+    color: aliceblue;
+    font-family: cursive;
+}
