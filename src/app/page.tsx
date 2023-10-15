@@ -1,6 +1,6 @@
 import Link from "next/link";
-import Login from "./Login/page";
-import Signup from "./Signup/page";
+import Login from "./login/page";
+import Signup from "./signup/page";
 import Image from "next/image";
 import "./home.css";
 
@@ -69,13 +69,13 @@ export default function Home() {
           }}
         >
           <Link
-            href={"./Login"}
+            href={"./login"}
             className="btn w-64 rounded-full bg-violet-400 text-black "
           >
             Sign-in
           </Link>
           <Link
-            href={"./Signup"}
+            href={"./signup"}
             className="btn w-64 rounded-full bg-violet-400 text-black"
           >
             Sign-up

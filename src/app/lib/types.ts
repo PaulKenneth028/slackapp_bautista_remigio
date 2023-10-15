@@ -21,7 +21,11 @@ export type User = {
   };
   export type GenericResponse<T> = {
     status: "success" | "error";
-    data: T;
-    errors?: Record<string, string[]>;
+    data: { errors?: Record<string, string[]>;};
+   
+    id: string;
+    headers: { accessToken: string; client: string; expiry: string; uid: string };
   };
+  
+
   
