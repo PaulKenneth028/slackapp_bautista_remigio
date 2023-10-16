@@ -2,11 +2,11 @@
 import Link from "next/link";
 import createUser from "./handleRegister";
 import React, { useState } from "react";
-import { useRouter } from "next/router";
+import { redirect } from "next/navigation";
 
 const Register = () => {
   const [response, setResponse] = useState<any>();
- 
+
   return (
     <>
       <form
@@ -14,11 +14,9 @@ const Register = () => {
           const data = await createUser(event);
           setResponse(data);
           console.log(data);
-          if(data?.status === "success"){
-            <Link href="./login" ></Link>
-            console.log("goto loginpage")
+          if (data?.status === "success") {
+            window.location.href = "./login";
           }
-           
         }}
         className="flex flex-col w-96 m-auto text-center text-lg font-semibold gap-1"
       >
