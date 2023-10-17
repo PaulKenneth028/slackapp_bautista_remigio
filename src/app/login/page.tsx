@@ -7,9 +7,6 @@ import { GenericResponse, User } from "../lib/types";
 const page = () => {
   const [response, setResponse] = useState<GenericResponse<User>>();
 
-  
-  
-
   return (
     <>
       <form
@@ -18,7 +15,7 @@ const page = () => {
           setResponse(data);
 
           if (!data?.data.errors) {
-            window.location.href = "./messages";
+            window.location.href = "./dashboard";
             console.log("proceed to dashboard page");
           }
         }}

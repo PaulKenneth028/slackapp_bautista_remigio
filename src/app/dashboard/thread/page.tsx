@@ -1,18 +1,19 @@
-import React from "react";
-import "./dashboard.css";
-import Image from "next/image";
-import { Router } from "next/router";
 import Link from "next/link";
+import React from "react";
+import Image from "next/image";
+import "./thread.css";
 
-export default function Dashboard() {
+export default function thread() {
   return (
     <div className="dashboard">
       <input type="text" placeholder="seach" id="searchBar" />
       <div className="dashboardSidebar flex flex-col justify-between items-center">
-        <h1>Home</h1>
+        <Link href={"./dashboard"} className="mt-10">
+          Home
+        </Link>
         <div className="flex flex-col">
-          <Link href={"./dashboard/Channels"}>Channels</Link>
-          <Link href={"./dashboard/messages"}>Direct message</Link>
+          <Link href={"./Channels"}>Channels</Link>
+          <Link href={"./messages"}>Direct message</Link>
         </div>
         <button className="w-100">
           <Image
@@ -24,14 +25,13 @@ export default function Dashboard() {
         </button>
       </div>
       <div className="pinnedandthread">
-        <Link href={"./dashboard/thread"}>Thread</Link>
-        <Link href={"./dashboard/pin"}>Pinned Messages</Link>
+        <Link href={"./thread"}>Thread</Link>
+        <Link href={"./pin"}>Pinned Messages</Link>
       </div>
       <div>
-        <p id="chatFrame"></p>
+        <p id="chatFrame">THREAD</p>
         <div className="messageAndSend">
           <input id="sendMessage" type="text" placeholder="Send message..." />
-          <button className="sendMessageBtn">Send</button>
         </div>
       </div>
       <h1 id="friendsList">Friends</h1>
