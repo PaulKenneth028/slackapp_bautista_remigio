@@ -1,10 +1,11 @@
 import Link from "next/link";
-import Login from "./login/page";
-import Signup from "./signup/page";
 import Image from "next/image";
 import "./home.css";
+import Register from "./signup/page";
+ 
 
 export default function Home() {
+ 
   return (
     <>
       <section className="flex justify-around items-center">
@@ -68,6 +69,7 @@ export default function Home() {
             justifyContent: "space-evenly",
           }}
         >
+        
           <Link
             href={"./login"}
             className="btn w-64 rounded-full bg-violet-400 text-black "
@@ -80,6 +82,7 @@ export default function Home() {
           >
             Sign-up
           </Link>
+         
         </div>
       </section>
       <div className="homefeatures">

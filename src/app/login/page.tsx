@@ -4,11 +4,10 @@ import handleLogin from "./handleLogin";
 import Link from "next/link";
 import { GenericResponse, User } from "../lib/types";
 
-const page = () => {
-  const [response, setResponse] = useState<GenericResponse<User>>();
+ 
 
-  
-  
+const Login = () => {
+  const [response, setResponse] = useState<GenericResponse<User>>();
 
   return (
     <>
@@ -16,10 +15,9 @@ const page = () => {
         onSubmit={async (event) => {
           const data = await handleLogin(event);
           setResponse(data);
-
+          localStorage.setItem("loginData", JSON.stringify(data))
           if (!data?.data.errors) {
             window.location.href = "./messages";
-            console.log("proceed to dashboard page");
           }
         }}
         className="flex flex-col w-96 m-auto text-center text-lg font-semibold gap-1"
@@ -43,4 +41,4 @@ const page = () => {
   );
 };
 
-export default page;
+export default Login;
