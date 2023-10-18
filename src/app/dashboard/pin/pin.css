@@ -56,8 +56,4 @@
 .pinnedandthread {
     border: 1px solid black;
     grid-area: pinnedandthread;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-evenly;
-    align-items: center;
 }
