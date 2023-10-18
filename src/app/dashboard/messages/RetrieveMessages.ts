@@ -1,11 +1,5 @@
-import { GenericResponse, User } from "../lib/types";
 
-
-
-import { loginData } from "./page";
-
-
- 
+ import { GenericResponse,User } from "@/app/lib/types";
 export const RetrieveMessages = async ( logindata: GenericResponse<User>) => {
     try {
       const query = await fetch(
@@ -31,11 +25,3 @@ export const RetrieveMessages = async ( logindata: GenericResponse<User>) => {
     }
     
   };
-
-//  export const retrieve = async () =>{  
-// const response: GenericResponse<User> | undefined = await RetrieveMessages(loginData);
-// if (response) {
-//   console.log("response generic function",response)
-//     return response 
-   
-// }}
