@@ -13,7 +13,6 @@ const Register = () => {
         onSubmit={async (event) => {
           const data = await createUser(event);
           setResponse(data);
-          console.log(data);
           if (data?.status === "success") {
             window.location.href = "./login";
           }

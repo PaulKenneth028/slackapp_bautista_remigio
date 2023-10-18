@@ -19,10 +19,13 @@ export type User = {
   export type LoginUser = Pick<User, "email"> & {
     password: string;
   };
+  
   export type GenericResponse<T> = {
+    json: any;
     status: "success" | "error";
-    data: { errors?: Record<string, string[]>;};
-   
+    data: { errors?: Record<string, string[]>,
+      map: (message: any, index: number) => JSX.Element;};
+     
     id: string;
     headers: { accessToken: string; client: string; expiry: string; uid: string };
   };
