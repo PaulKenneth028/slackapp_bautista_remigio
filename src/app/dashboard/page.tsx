@@ -20,7 +20,7 @@ export default function Dashboard() {
         const jsonData = await response.json();
         setMessages(jsonData);
       } else {
-        console.error("Error fetching messages:", response.status);
+        console.log("Error fetching messages:", response.status);
       }
     } catch (error) {
       console.error("Error fetching messages:", error);
