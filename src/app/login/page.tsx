@@ -17,7 +17,8 @@ const Login = () => {
           setResponse(data);
           localStorage.setItem("loginData", JSON.stringify(data))
           if (!data?.data.errors) {
-            window.location.href = "./messages";
+            window.location.href = "./dashboard";
+            console.log("proceed to dashboard page");
           }
         }}
         className="flex flex-col w-96 m-auto text-center text-lg font-semibold gap-1"
