@@ -4,22 +4,30 @@ import { LoginUser } from "../../lib/types";
 import "./message.css";
 import Link from "next/link";
 import Image from "next/image";
+import { useState, useEffect } from "react";
 
-type Props = {
-  response: LoginUser[];
-};
+export default function Messages() {
+  const [messages, setMessages] = useState([]);
 
-const Messages = ({ response }: Props) => {
-  const onClick = (event: FormEvent) => {
-    event.preventDefault();
-    console.log(response);
+  useEffect(() => {
+    fetchData();
+  }, []);
+
+  const fetchData = async () => {
+    try {
+      const response = await fetch("<your_api_endpoint>");
+      const jsonData = await response.json();
+      setMessages(jsonData);
+    } catch (error) {
+      console.error("Error fetching messages:", error);
+    }
   };
 
   return (
     <div className="dashboard">
       <input type="text" placeholder="seach" id="searchBar" />
       <div className="dashboardSidebar flex flex-col justify-between items-center">
-        <Link href={"./dashboard"} className="mt-10">
+        <Link href={"./"} className="mt-10">
           Home
         </Link>
         <div className="flex flex-col">
@@ -43,7 +51,7 @@ const Messages = ({ response }: Props) => {
         <p id="chatFrame">DIRECT MESSAGES</p>
         <div className="messageAndSend">
           <input id="sendMessage" type="text" placeholder="Send message..." />
-          <button className="sendMessageBtn" type="submit" onClick={onClick}>
+          <button className="sendMessageBtn" type="submit">
             Send
           </button>
         </div>
@@ -51,6 +59,4 @@ const Messages = ({ response }: Props) => {
       <h1 id="friendsList">Friends</h1>
     </div>
   );
-};
-
-export default Messages;
+}

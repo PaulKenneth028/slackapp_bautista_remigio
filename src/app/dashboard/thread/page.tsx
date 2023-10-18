@@ -1,3 +1,4 @@
+"use client";
 import Link from "next/link";
 import React from "react";
 import Image from "next/image";
@@ -8,7 +9,7 @@ export default function thread() {
     <div className="dashboard">
       <input type="text" placeholder="seach" id="searchBar" />
       <div className="dashboardSidebar flex flex-col justify-between items-center">
-        <Link href={"./dashboard"} className="mt-10">
+        <Link href={"./"} className="mt-10">
           Home
         </Link>
         <div className="flex flex-col">
