@@ -3,6 +3,7 @@ import Link from "next/link";
 import createUser from "./handleRegister";
 import React, { useState } from "react";
 import { redirect } from "next/navigation";
+import { useRouter } from "next/router";
 
 const Register = () => {
   const [response, setResponse] = useState<any>();
