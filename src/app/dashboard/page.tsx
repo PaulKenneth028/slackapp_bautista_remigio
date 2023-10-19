@@ -56,7 +56,7 @@ export default function Dashboard() {
         <h1>Home</h1>
         <div className="flex flex-col">
           <Link href="/dashboard/Channels">Channels</Link>
-          <Link href="/dashboard/messages">Direct message</Link>
+          <Link href="/dashboard/RetrieveMessages">Direct message</Link>
         </div>
         <button className="w-100">
           <Image

@@ -26,8 +26,7 @@ export default function thread() {
         </button>
       </div>
       <div className="pinnedandthread">
-        <Link href={"./thread"}>Thread</Link>
-        <Link href={"./pin"}>Pinned Messages</Link>
+        <h1>Notifications</h1>
       </div>
       <div>
         <p id="chatFrame">THREAD</p>

@@ -27,13 +27,12 @@ export default function Channels() {
         </button>
       </div>
       <div className="pinnedandthread">
-        <Link href={"./thread"}>Thread</Link>
-        <Link href={"./pin"}>Pinned Messages</Link>
+        <p>Channel List</p>
       </div>
       <div>
-        <p id="chatFrame">CHANNELS</p>
+        <p id="chatFrame">Channels</p>
         <div className="messageAndSend">
-          <input id="sendMessage" type="text" placeholder="" />
+          <input id="sendMessage" type="text" placeholder="Send message..." />
         </div>
       </div>
       <h1 id="friendsList">Friends</h1>
