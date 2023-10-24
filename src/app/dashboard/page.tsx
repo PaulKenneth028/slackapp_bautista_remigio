@@ -4,49 +4,50 @@ import Image from "next/image";
 import Link from "next/link";
 import { BASE_URL } from "../lib/util";
 import "./dashboard.css";
-
+export let loginData = JSON.parse(localStorage.getItem("loginData") || "null");
 export default function Dashboard() {
-  const [messages, setMessages] = useState([]);
-  const [newMessage, setNewMessage] = useState("");
+  
+  // const [messages, setMessages] = useState([]);
+  // const [newMessage, setNewMessage] = useState("");
 
-  useEffect(() => {
-    fetchData();
-  }, []);
+  // useEffect(() => {
+  //   fetchData();
+  // }, []);
 
-  const fetchData = async () => {
-    try {
-      const response = await fetch("http://206.189.91.54/api/v1/messages");
-      if (response.ok) {
-        const jsonData = await response.json();
-        setMessages(jsonData);
-      } else {
-        console.log("Error fetching messages:", response.status);
-      }
-    } catch (error) {
-      console.error("Error fetching messages:", error);
-    }
-  };
+  // const fetchData = async () => {
+  //   try {
+  //     const response = await fetch("http://206.189.91.54/api/v1/messages");
+  //     if (response.ok) {
+  //       const jsonData = await response.json();
+  //       setMessages(jsonData);
+  //     } else {
+  //       console.log("Error fetching messages:", response.status);
+  //     }
+  //   } catch (error) {
+  //     console.error("Error fetching messages:", error);
+  //   }
+  // };
 
-  const sendMessage = async () => {
-    try {
-      const response = await fetch("http://206.189.91.54/api/v1/messages", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({ text: newMessage }),
-      });
+  // const sendMessage = async () => {
+  //   try {
+  //     const response = await fetch("http://206.189.91.54/api/v1/messages", {
+  //       method: "POST",
+  //       headers: {
+  //         "Content-Type": "application/json",
+  //       },
+  //       body: JSON.stringify({ text: newMessage }),
+  //     });
 
-      if (response.ok) {
-        fetchData();
-        setNewMessage("");
-      } else {
-        console.error("Failed to send message");
-      }
-    } catch (error) {
-      console.error("Error sending message:", error);
-    }
-  };
+  //     if (response.ok) {
+  //       fetchData();
+  //       setNewMessage("");
+  //     } else {
+  //       console.error("Failed to send message");
+  //     }
+  //   } catch (error) {
+  //     console.error("Error sending message:", error);
+  //   }
+  // };
 
   return (
     <div className="dashboard">
@@ -56,7 +57,7 @@ export default function Dashboard() {
         <h1>Home</h1>
         <div className="flex flex-col">
           <Link href="/dashboard/Channels">Channels</Link>
-          <Link href="/dashboard/RetrieveMessages">Direct message</Link>
+          <Link href="/dashboard/direct-message">Direct message</Link>
         </div>
         <button className="w-100">
           <Image
@@ -74,16 +75,8 @@ export default function Dashboard() {
       <div>
         <p id="chatFrame"></p>
         <div className="messageAndSend">
-          <input
-            id="sendMessage"
-            type="text"
-            placeholder="Send message..."
-            value={newMessage}
-            onChange={(e) => setNewMessage(e.target.value)}
-          />
-          <button className="sendMessageBtn" onClick={sendMessage}>
-            Send
-          </button>
+          <input id="sendMessage" type="text" placeholder="Send message..." />
+          <button className="sendMessageBtn">Send</button>
         </div>
       </div>
       <h1 id="friendsList">Friends</h1>
