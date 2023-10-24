@@ -4,8 +4,6 @@ import handleLogin from "./handleLogin";
 import Link from "next/link";
 import { GenericResponse, User } from "../lib/types";
 
- 
-
 const Login = () => {
   const [response, setResponse] = useState<GenericResponse<User>>();
 
@@ -15,10 +13,10 @@ const Login = () => {
         onSubmit={async (event) => {
           const data = await handleLogin(event);
           setResponse(data);
-          localStorage.setItem("loginData", JSON.stringify(data))
+          localStorage.setItem("loginData", JSON.stringify(data));
           if (!data?.data.errors) {
             window.location.href = "./dashboard";
-            console.log("proceed to dashboard page");
+            
           }
         }}
         className="flex flex-col w-96 m-auto text-center text-lg font-semibold gap-1"

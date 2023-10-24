@@ -1,9 +1,8 @@
 import React, { FormEvent } from "react";
 import { BASE_URL } from "../lib/util";
 import { GenericResponse, User, LoginUser } from "../lib/types";
- 
+
 const HandleLogin = async (event: FormEvent) => {
- 
   event.preventDefault();
   const formData = new FormData(event.target as HTMLFormElement);
   try {
@@ -18,7 +17,6 @@ const HandleLogin = async (event: FormEvent) => {
       body: JSON.stringify({
         email: loginUser.email as string,
         password: loginUser.password as string,
-        
       }),
     });
     const headers = query.headers;
@@ -34,8 +32,6 @@ const HandleLogin = async (event: FormEvent) => {
   } catch (error) {
     console.error("Error fetching data:", error);
   }
-   
- 
 };
 
 export default HandleLogin;

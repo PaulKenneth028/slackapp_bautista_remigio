@@ -15,7 +15,7 @@ export default function Channels() {
         </Link>
         <div className="flex flex-col">
           <Link href={"./Channels"}>Channels</Link>
-          <Link href={"./messages"}>Direct message</Link>
+          <Link href={"./direct-message"}>Direct message</Link>
         </div>
         <button className="w-100">
           <Image
