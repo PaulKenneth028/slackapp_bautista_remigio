@@ -8,15 +8,17 @@ import Image from "next/image";
 import { getUserChatList } from "./getUserChatList";
 import { loginData } from "../page";
 import { ListOfUsers } from "./getListOfUser";
+
 const DirectMessage = () => {
   const [chatList, setChatList] = useState<any>([]);
   const [listOfUsers, setListOfUsers] = useState<any>([]);
-// 
+
   const fetchListOfUsers = async () => {
     let value = await ListOfUsers(loginData);
     setListOfUsers(value);
     return value;
   };
+
   const fetchUserChatList = async () => {
     let value = await getUserChatList(loginData);
     setChatList(value);
@@ -24,14 +26,10 @@ const DirectMessage = () => {
   };
 
   useEffect(() => {
-    // setInterval(() => {
     fetchListOfUsers();
     fetchUserChatList();
-
-    // }, 5000)
   }, []);
-  console.log("chatList", chatList);
-  console.log("listOfUsers", listOfUsers);
+
   let usersId: any[] = [];
   for (let i = 0; i < chatList.length; i++) {
     chatList[i].map((item: any) => {
@@ -46,9 +44,9 @@ const DirectMessage = () => {
   const removeDuplicates = (arr: any[]) => {
     return [...new Set(arr)];
   };
-  console.log("usersId", usersId);
+
   let filteredUsersId = removeDuplicates(usersId);
-  console.log("filteredUsersId", filteredUsersId);
+
   return (
     <>
       <div className="dashboard">
@@ -70,9 +68,9 @@ const DirectMessage = () => {
         </div>
         <div className="pinnedandthread">
           <p>UserChatList</p>
-          {filteredUsersId.map((item: any) => {
+          {filteredUsersId.map((item: any, index: number) => {
             return (
-              <div>
+              <div key={index}>
                 <p>{item}</p>
               </div>
             );
@@ -85,9 +83,9 @@ const DirectMessage = () => {
             onSubmit={async (event) => {
               let data = await SendMessage(event, loginData);
             }}
-            className=" rounded-lg w-96 border mt-3"
+            className="rounded-lg w-96 border mt-3"
           >
-            <textarea name="message" className=" w-80 rounded-lg"></textarea>
+            <textarea name="message" className="w-80 rounded-lg"></textarea>
             <button type="submit">Send</button>
           </form>
         </div>
@@ -96,4 +94,5 @@ const DirectMessage = () => {
     </>
   );
 };
+
 export default DirectMessage;
